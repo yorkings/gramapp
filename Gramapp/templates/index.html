@@ -1,34 +1,155 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>insta-clone</title>
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<html>
+<head> 
+  <title>Instagram Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+  <style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #ffffff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img,
+.profile-icon img 
+{
+  width: 30px;
+  height: 30px;
+}
+
+.search-bar {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+main {
+  display: flex;
+}
+
+.sidebar {
+  background-color: #fafafa;
+  width: 200px;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  font-size: 35px;
+}
+
+.sidebar a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.feed {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+footer {
+  background-color: #ffffff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.footer-links ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+.footer-links ul li{
+  margin-left: 1rem;
+
+}
+
+.footer-logo img{
+  width: 30px;
+  height: 30px;
+}
+
+
+
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-wrapper">
-            <img src="{% static 'insta/insta-logo.png' %}" alt="" class="brand-img">
-            <form action="" class="search-form">
-                <input type="text" class="search-box" placeholder="search">
-            </form>
-            <div class="nav-items">
-                <i class="fa-solid fa-house"></i>
-                <i class="icon fa-solid fa-plus"></i>
-                <i class="icon fa-solid fa-heart"></i>
-            </div>
-            <div class="icon user-profile">
-                <i class="fa-solid fa-user fa-lg"></i>
-            </div>
-        </div>
-       
-    </nav>
-    <script src="https://kit.fontawesome.com/ef14bb597e.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+  <header>
+    <div class="logo">
+      <img src="{%static '/insta/insta-logo.png' %}" alt="Instagram Logo">
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search">
+    </div>
+    <div class="profile-icon">
+      <img src="{% static 'insta/proff-logo.png' %}" alt="Profile Icon">
+    </div>
+  </header>
+
+  <main>
+    <div class="sidebar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Explore</a></li>
+        <li><a href="#">Notifications</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+    </div>
+
+    <div class="feed">
+      <!-- Posts and content go here -->
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">API</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Locations</a></li>
+        <li><a href="#">Top Accounts</a></li>
+        <li><a href="#">Hashtags</a></li>
+        <li><a href="#">Language</a></li>
+      </ul>
+    </div>
+    <div class="footer-logo">
+      <img src="{% static '/insta/insta-logo.png' %}" alt="Instagram Logo">
+    </div>
+  </footer>
 </body>
 </html>

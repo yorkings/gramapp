@@ -9,7 +9,8 @@ from .forms import *
 def home(request):
    return render(request,'home.html',{'user':request.user}) 
 def dashboard(request):
-   return render(request,'dashboard.html',{'user':request.user}) 
+   return render(request,'index.html',{'user':request.user}) 
+
  
 def createpost(request):
     user = request.user.id
