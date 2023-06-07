@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'prof',
     'notification',
+    'comment',
+    'directs'
 ]
 
 MIDDLEWARE = [
@@ -64,7 +66,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'insta_clone',
         'USER': 'postgres',
-        'PASSWORD': 'mypass',
+        'PASSWORD': 'yorkings',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -95,10 +97,23 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
-# Crispy Forms settings
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = 'index'
+
+LOGOUT_REDIRECT_URL = 'sign-in'
+
+LOGIN_URL = 'sign-in'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

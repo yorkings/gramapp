@@ -4,19 +4,20 @@
 {% load static %}
 <link rel="stylesheet" href="{%static 'css/signup.css' %}"> 
  <div class="container">
-  <form action="" method="Post" class="form-container">
-    {% csrf_token %}
-    {% for x in form %}
-     <p>{{x.label}} :<br> {{x}}</p> 
-      <div>
-        {% for err in x.errors %}
-           <p class="error">{{err}}</p>
-           {% endfor %}
-      </div>
-      {% endfor %}
-      <button type="submit" >register</button>
-      <p> Already have an account ? <a href="{% url 'sign-in' %}">login</a> </p>
- </form>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div> <img src="{% static '/insta/insta-logo.png' %}" alt="logo" style="height: 10%;width: min-content;"></div>
+      {{form.username}}
+      {{form.email}}
+      {{form.password1}}
+      {{form.password2}}
+      <button class="form-btn" type="submit">register</button>
+      <span class="has-separator">Or</span><a class="facebook-login" href="#"><i class="fab fa-facebook-square"></i> Log in with Facebook </a>
+      <a class="password-reset" href="#">Forgot password?</a>
+    </form>
+    <div class="sign-up">
+      Don't have an account? <a href="{% url 'sign-in' %}">Sign In</a>
+    </div>
  </div>
   
 {% endblock %}

@@ -11,10 +11,51 @@ from django.contrib.auth import authenticate, login
 from gram.models import Post, Follow, Stream
 from django.contrib.auth.models import User
 from prof.models import Profile
-from .forms import EditProfileForm, UserRegisterForm
+from .forms import EditProfileForm, UserRegisterForm,LoginForm
 from django.urls import resolve
 #from comment.models import Comment
+def user_login(request):
+    if request.method=='POST':
+     log=LoginForm(request.POST)
+     if log.is_valid():
+        username=log.cleaned_data['username']
+        password=log.cleaned_data['password']
+        user=authenticate(request, username=username,password=password)
+        if user is not None:
+                login(request,user)
+                messages.success(request,f'{username}, you have been logged in successfully')
+                return redirect('dashboard')
+        else:
+           messages.error(request,"invalid username or password ")   
+    else:
+        log=LoginForm()
+    return render(request,'login.html',{'login':log})
+ 
+def register(request):
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+           # Profile.get_or_create(user=request.user)
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Hurray your account was created!!')
 
+            # # Automatically Log In The User
+
+            # new_user = authenticate(username=form.cleaned_data['username'] ,password=form.cleaned_data['password1'],)
+            # login(request, new_user)
+            # return redirect('editprofile')
+            return redirect('sign-in')
+    elif request.user.is_authenticated:
+        return redirect('index')
+    else:
+        form = UserRegisterForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'signup.html', context)
+ 
+@login_required
 def UserProfile(request, username):
     Profile.objects.get_or_create(user=request.user)
     user = get_object_or_404(User, username=username)
@@ -51,10 +92,10 @@ def UserProfile(request, username):
     }
     return render(request, 'profile.html', context)
 
+@login_required
 def EditProfile(request):
     user = request.user.id
     profile = Profile.objects.get(user__id=user)
-
     if request.method == "POST":
         form = EditProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
@@ -72,8 +113,9 @@ def EditProfile(request):
     context = {
         'form':form,
     }
-    return render(request, 'editprofile.html', context)
+    return render(request, 'create_profile.html', context)
 
+@login_required
 def follow(request, username, option):
     user = request.user
     following = get_object_or_404(User, username=username)
@@ -96,25 +138,3 @@ def follow(request, username, option):
         return HttpResponseRedirect(reverse('profile', args=[username]))
 
 
-def register(request):
-    if request.method == "POST":
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            new_user = form.save()
-            Profile.get_or_create(user=request.user)
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Hurray your account was created!!')
-
-            # # Automatically Log In The User
-            # new_user = authenticate(username=form.cleaned_data['username'] ,password=form.cleaned_data['password1'],)
-            # login(request, new_user)
-            # return redirect('editprofile')
-            return redirect('sign-in')
-    elif request.user.is_authenticated:
-        return redirect('sign-in')
-    else:
-        form = UserRegisterForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'signup.html', context)
