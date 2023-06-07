@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}signup{% endblock %}
+{% block content %}
+  <form action="" method="Post">
+     {% csrf_token %}
+     {% for x in form %}
+      <p>{{x.label}} :<br> {{x}}</p> 
+       <div>
+         {% for err in x.errors %}
+            <p class="error">{{err}}</p>
+            {% endfor %}
+       </div>
+       {% endfor %}
+       <button type="submit" class="btn-primary">register</button>
+       <p>Don't have an account <a href="{% url 'login' %}">login</a> </p>
+  </form>
+{% endblock %}

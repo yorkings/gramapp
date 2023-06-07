@@ -1,0 +1,88 @@
+style.css
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .brand-img {
+    height: 28px;
+    margin-right: 16px;
+  }
+  
+  .search-form {
+    position: relative;
+  }
+  
+  .search-box {
+    width: 200px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fafafa;
+    font-size: 14px;
+    color: #333333;
+  }
+  
+  .nav-icons {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
+  
+  .nav-icons a {
+    margin-right: 12px;
+    color: #333333;
+    text-decoration: none;
+  }
+  
+  .nav-icons a:last-child {
+    margin-right: 0;
+  }
+  
+  .nav-icons i {
+    font-size: 20px;
+  }
+  
+  .user-profile {
+    color: #333333;
+    cursor: pointer;
+  }
+  
+  .user-profile i {
+    font-size: 24px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .nav-icons {
+      margin-right: 0;
+    }
+  
+    .search-form {
+      flex-grow: 1;
+      margin-left: 16px;
+    }
+  
+    .search-box {
+      width: 100%;
+    }
+  }
+  
