@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %} ">
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+
+    
+           
+
+</head>
+<body>
+    <header>
+        <h1 class="logo">GRAMAPP</h1>
+        <h3 class="signUp-login"><a href="{% url 'sign-in' %}">Login</a></h3>
+    </header>
+    <main> 
+         <!-- Content changes here -->
+    <pre class="main-text">
+        <a href="{% url 'sign-in' %}">
+        Login
+    </a>
+        to join us.
+        or
+        <a href="{% url 'sign-up' %}">
+        Sign Up
+    </a>
+    </pre>
+
+    <!-- Content changes end here -->
+</main>
+</body>
+</html>

@@ -64,7 +64,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'insta_clone',
         'USER': 'postgres',
-        'PASSWORD': 'yorkings',
+        'PASSWORD': 'mypass',
         'HOST': 'localhost',
         'PORT': '5432',
     }

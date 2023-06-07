@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 {% block title %}login{% endblock %}
 {% block content %}
-<form action="" method="Post">
-    <span style="text-align: center;font-weight: 900;">LOGIN</span>
-    {% csrf_token %}
-    {{login.as_p}}
-    <button type="submit" class="btn-primary">login</button>
-    <p>Don't have an account <a href="{% url 'signup' %}">register</a> </p>
-</form>
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/login.css' %}"> 
+<div class="container">
+    <h2>Login</h2>
+        <form action="" method="post" class="form-container">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="" placeholder="username">
+            
+            <label for="password">Password</label>
+            <input type="password" name="password" id="" placeholder="password">
+            
+            <button type="submit">Login</button>
+        </form>
+        <hr>
+    <p>Don't have an account? <a href="{% url 'sign-up' %}">Sign Up</a> </p>
+</div>
 {% endblock %}
+

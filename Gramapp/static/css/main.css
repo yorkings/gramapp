@@ -13,7 +13,7 @@
     --green:rgba(61, 180, 50, 0.966);
     --light-white:rgba(223, 228, 220, 0.795);
 }
-form{
+/* form{
     min-height:200px ;
     min-width: 300px;
     margin:0 auto;
@@ -65,4 +65,4 @@ header.container{
 
 .more-more li:last-child{
     margin-bottom: 0px;
-} 
+}  */

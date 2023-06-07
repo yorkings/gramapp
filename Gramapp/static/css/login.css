@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: montserrat, Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background: #7e7e7e;
+    background: linear-gradient(135deg, #7e7e7e 0%,#3f3f3f 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #EFEFEF;
+    display: flex;
+    padding: 0 4rem;
+    height: 5rem;
+    align-items: center;
+}
+
+.logo {
+    margin: 0 auto 0 0;
+    font-weight: bold;
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Content changes here */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #FCFCFC;
+    width: 25%;
+    margin: 6em auto;
+    border-radius: 10px;
+    height: 65vh;
+}
+
+.container h2 {
+    margin: 2rem auto 0 auto;
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 3rem;
+    margin: auto 0;
+    
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+    margin: 1rem 0 .5rem .5rem;
+    font-size: 1em;
+}
+
+input {
+    margin: .5rem 0;
+    height: 2rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: #E1E1E1;
+    border-radius: 15px;
+    margin: 0 0 1rem 0;
+    padding: 0 .5rem;
+    display: flex;
+    align-items: center; 
+    font-size: 1em;
+
+    
+}
+
+
+button {
+    height: 2rem;
+    width: 80%;
+    margin: 2rem auto auto;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #3f3f3f 0%,#7e7e7e 100%);
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    letter-spacing: 1.5px;
+
+}
+
+hr {
+    margin: auto 0 0 ;
+}
+p {
+    margin: 1rem auto 1rem auto;
+}
+
