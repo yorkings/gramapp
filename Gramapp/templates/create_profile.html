@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<br><br>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://kit.fontawesome.com/fc1e235b2e.js"></script>
-  <link rel="stylesheet" href="{% static 'assets2/style.css' %}">
-  <title>Instagram Login Form</title>
+  <link rel="stylesheet" href="{% static 'css/prof/edit.css' %}">
+  <title>Edit Profile - Instagram</title>
 </head>
 
 <body>
@@ -22,64 +22,38 @@
       <div class="phone-app-ddemo"></div>
       <div class="form-data">
         <form action="" method="POST" enctype="multipart/form-data">
-			{% csrf_token %}
+          {% csrf_token %}
           <div class="logo">
-            <h3 style="padding: 20px; font-size: 20px;">Edit Profile</h3>
+            <h3>Edit Profile</h3>
           </div>
-          {{form.image}} <br>
-		  {{form.first_name}} <br>
-		  {{form.last_name}} <br>
-		  {{form.bio}} <br>
-		  {{form.location}} <br>
-		  {{form.url}} <br>
+          <div class="form-group">
+            {{ form.image.label }}
+            {{ form.image }}
+          </div>
+          <div class="form-group">
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+          </div>
+          <div class="form-group">
+            {{ form.last_name.label }}
+            {{ form.last_name }}
+          </div>
+          <div class="form-group">
+            {{ form.bio.label }}
+            {{ form.bio }}
+          </div>
+          <div class="form-group">
+            {{ form.location.label }}
+            {{ form.location }}
+          </div>
+          <div class="form-group">
+            {{ form.url.label }}
+            {{ form.url }}
+          </div>
           <button class="form-btn" type="submit">Update Profile</button>
-          <!-- <a href="index.html" class="form-btn" type="submit">Log in</a> -->
-          
         </form>
-        
       </div>
     </div>
-
-    <footer>
-      <div class="container">
-        <nav class="footer-nav">
-          <ul>
-            <li>
-              <a href="#">About us</a>
-            </li>
-            <li>
-              <a href="#">Support</a>
-            </li>
-            <li>
-              <a href="#">Press</a>
-            </li>
-            <li>
-              <a href="#">Api</a>
-            </li>
-            <li>
-              <a href="#">Jobs</a>
-            </li>
-            <li>
-              <a href="#">Privacy</a>
-            </li>
-            <li>
-              <a href="#">Terms</a>
-            </li>
-            <li>
-              <a href="#">Directory</a>
-            </li>
-            <li>
-              <a href="#">Profiles</a>
-            </li>
-            <li>
-              <a href="#">Hashtags</a>
-            </li>
-            <li>
-              <a href="#">Languages</a>
-            </li>
-          </ul>
-        </nav>
-
   </div>
 
 </body>

@@ -48,6 +48,7 @@ def index(request):
 
 
 @login_required
+
 def createpost(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
@@ -147,5 +148,7 @@ def favourite(request, post_id):
 
 def home(request):
    return render(request,'home.html',{'user':request.user}) 
+
+@login_required
 def dashboard(request):
    return render(request,'index.html',{'user':request.user}) 
