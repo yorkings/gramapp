@@ -10,9 +10,8 @@ from django.urls import resolve
 from comment.models import Comment
 from comment.forms import NewCommentForm
 from django.core.paginator import Paginator
-
 from django.db.models import Q
-# from post.models import Post, Follow, Stream
+from gram.models import Post, Follow, Stream
 @login_required
 def index(request):
     user = request.user
@@ -25,7 +24,7 @@ def index(request):
     posts = Stream.objects.filter(user=user)
     group_ids = []
     for post in posts:
-        group_ids.append(post.post_id)
+        group_ids.append(post.id)
         
     post_items = Post.objects.filter(id__in=group_ids).all().order_by('-created')
 
@@ -36,19 +35,16 @@ def index(request):
         paginator = Paginator(users, 6)
         page_number = request.GET.get('page')
         users_paginator = paginator.get_page(page_number)
-
-
     context = {
         'post_items': post_items,
         'follow_status': follow_status,
         'profile': profile,
         'all_users': all_users,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'dashboard.html', context)
 
 
 @login_required
-
 def createpost(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
@@ -112,9 +108,6 @@ def Tags(request, tag_slug):
 
     }
     return render(request, 'tag.html', context)
-
-
-# Like function
 @login_required
 def like(request, post_id):
     user = request.user
@@ -131,7 +124,6 @@ def like(request, post_id):
         
     post.likes = current_likes
     post.save()
-    # return HttpResponseRedirect(reverse('post-details', args=[post_id]))
     return HttpResponseRedirect(reverse('post-details', args=[post_id]))
 
 @login_required
@@ -151,4 +143,4 @@ def home(request):
 
 @login_required
 def dashboard(request):
-   return render(request,'index.html',{'user':request.user}) 
+   return render(request,'base.html',{'user':request.user}) 

@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 from prof.models import Profile
 from .forms import EditProfileForm, UserRegisterForm,LoginForm
 from django.urls import resolve
-#from comment.models import Comment
+from comment.models import Comment
 def user_login(request):
     if request.method=='POST':
      log=LoginForm(request.POST)
@@ -42,10 +42,9 @@ def register(request):
 
             # # Automatically Log In The User
 
-            # new_user = authenticate(username=form.cleaned_data['username'] ,password=form.cleaned_data['password1'],)
-            # login(request, new_user)
-            # return redirect('editprofile')
-            return redirect('sign-in')
+            new_user = authenticate(username=form.cleaned_data['username'] ,password=form.cleaned_data['password1'],)
+            login(request, new_user)
+            return redirect('editprofile')
     elif request.user.is_authenticated:
         return redirect('index')
     else:
@@ -72,7 +71,7 @@ def UserProfile(request, username):
     posts_count = Post.objects.filter(user=user).count()
     following_count = Follow.objects.filter(follower=user).count()
     followers_count = Follow.objects.filter(following=user).count()
-    # count_comment = Comment.objects.filter(post=posts).count()
+    #count_comment = Comment.objects.filter(post=posts).count()
     follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
 
     # pagination
