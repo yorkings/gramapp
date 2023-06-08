@@ -76,7 +76,7 @@
                     {% if request.user.is_authenticated and request.user == profile.user %}
                     <div class="profile-buttons">
                         <a href="{% url 'editprofile' %}" class="btn profile-edit-btn">Edit Profile</a>
-                        <a href="{% url 'sign-out' %}" class="btn profile-edit-btn">Logout</a>
+                        <a href="{% url 'dashboard' %}" class="btn profile-edit-btn">Back</a>
                         <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
                     </div>
                     {% endif %}

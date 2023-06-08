@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comment Section</title>
+    <style>
+        /* CSS styles for the comment section */
+
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            max-width: 20rem;
+            border: none;
+        }
+        .comment-section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .comment-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .comment-form input[type="text"],
+        .comment-form input[type="email"],
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
+
+        .comment-form textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .comment-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comment-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
+
+        .comment-info {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .comment-author {
+            color: #333333;
+        }
+
+           .comment-body {
+            margin: 0;
+            line-height: 1.5;
+        }
+                /* Comments section */
+        .comments {
+            margin-top: 2rem;
+        }
+
+        .comment {
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            background-color: #f4f4f4;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .comment .info {
+            font-size: 0.875rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment p {
+            margin-bottom: 0.5rem;
+        }
+
+        .comment p:last-child {
+            margin-bottom: 0;
+        }
+
+        .no-comments {
+            margin-top: 2rem;
+            color: #888;
+        }
+
+        .comment-form {
+            margin-top: 2rem;
+        }
+
+        .comment-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .comment-form input[type="text"],
+        .comment-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+        }
+
+        .comment-form button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #56CCF2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        text{
+            color: #2F80ED;
+        }
+        .comment-button {
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .comment-button:hover {
+            background-color: #45a049;
+        }
+
+        .comment-button:active {
+            background-color: #3e8e41;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="comment-section">
+        <!-- Comment form -->
+        <form class="comment-form" action="{% url 'add_comment_to_post' %}" method="post">
+            {% csrf_token %}
+            <select name="post">
+                {% for post in posts %}
+                <option value="{{ post.id }}">{{ post.title }}</option>
+                {% endfor %}
+            </select>
+            <textarea name="body" required placeholder="Write your comment"></textarea>
+            <input type="submit" value="Comment" class="comment-button">
+        </form>
+        
+        <!-- Display submitted comments -->
+        {% if comments %}
+        <h2>Comments</h2>
+        <ul class="comment-list">
+            {% for comment in comments %}
+            <li class="comment-item">
+                <div class="comment-info">
+                    <span class="comment-author">{{ comment.user }}</span> 
+                </div>
+                <p class="comment-body">{{ comment.body }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    
+</body>
+</html>

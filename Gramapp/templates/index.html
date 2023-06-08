@@ -118,7 +118,10 @@ footer {
       <a href="{% url 'profile' user.username %}">
         <img src="{% static 'insta/proff-logo.png' %}" alt="Profile Icon">
       </a>
-      
+
+    </div>
+    <div>
+      <a href="{% url 'sign-out' %}">Log out</a> |{{user}}
     </div>
   </header>
 

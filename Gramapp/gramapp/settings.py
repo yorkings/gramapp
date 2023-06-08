@@ -64,9 +64,9 @@ WSGI_APPLICATION = 'gramapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'insta_clone',
+        'NAME': 'sync',
         'USER': 'postgres',
-        'PASSWORD': 'yorkings',
+        'PASSWORD': 'new_password',
         'HOST': 'localhost',
         'PORT': '5432',
     }
