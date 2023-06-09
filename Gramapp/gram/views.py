@@ -85,7 +85,7 @@ def PostDetail(request, post_id):
             comment.post = post
             comment.user = user
             comment.save()
-            return HttpResponseRedirect(reverse('post-details', args=[post.id]))
+            return HttpResponseRedirect(reverse('post', args=[post.id]))
     else:
         form = NewCommentForm()
 
@@ -124,7 +124,7 @@ def like(request, post_id):
         
     post.likes = current_likes
     post.save()
-    return HttpResponseRedirect(reverse('post-details', args=[post_id]))
+    return HttpResponseRedirect(reverse('post', args=[post_id]))
 
 @login_required
 def favourite(request, post_id):
@@ -136,7 +136,7 @@ def favourite(request, post_id):
         profile.favourite.remove(post)
     else:
         profile.favourite.add(post)
-    return HttpResponseRedirect(reverse('post-details', args=[post_id]))
+    return HttpResponseRedirect(reverse('post', args=[post_id]))
 
 def home(request):
    return render(request,'home.html',{'user':request.user}) 

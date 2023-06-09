@@ -1,46 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}profile{% endblock%}
+{% block title %}profile{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/prof/reset.css' %}">
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
 <header>
     <div class="container">
         <div class="profile">
             <div class="profile-image">
-                <img src="{{profile.image.url}}" alt="" style="width: 200px; height: 200px;">
+                <img src="{{ profile.image.url }}" alt="" style="width: 200px; height: 200px;">
             </div>
             <div class="profile-details">
                 <div class="profile-user-settings">
                     {% if profile.first_name %}
                     <div class="profile-label">
                         <span class="profile-label-text">Name:</span>
-                        <h6 class="profile-user-name">{{profile.first_name}} {{profile.last_name}}</h6>
+                        <h6 class="profile-user-name">{{ profile.first_name }} {{ profile.last_name }}</h6>
                     </div>
                     {% endif %}
                     <div class="profile-label">
                         <span class="profile-label-text">Username:</span>
-                        <h5 style="font-size: 15px;" class="profile-user-name">@{{profile.user.username}}</h5>
+                        <h5 style="font-size: 15px;" class="profile-user-name">@{{ profile.user.username }}</h5>
                     </div>
                     <br><br>
-                  
                 </div>
                 <div class="profile-bio">
                     <br>
                     {% if profile.bio %}
-
                     <span class="profile-label-text">BIO:</span>
-                    <p><span class="profile-real-name"></span> {{profile.bio}}</p>
+                    <p><span class="profile-real-name"></span> {{ profile.bio }}</p>
                     {% endif %}
                     {% if profile.location %}
-
                     <span class="profile-label-text">LOCATION:</span>
-                    <p><span class="profile-real-name"></span>{{profile.location}}</p>
+                    <p><span class="profile-real-name"></span>{{ profile.location }}</p>
                     {% endif %}
                     {% if profile.url %}
-                     
-                    <span class="profile-label-text">URL:</span>
-                    <p><span class="profile-real-name"></span> <a href="{{profile.url}}">{{profile.url}}</a></p>
+                    <span class="profile-label-text">url:</span>
+                    <p><span class="profile-real-name"></span> <a href="{{ profile.url }}">{{ profile.url }}</a></p>
                     {% endif %}
                     <br><br>
                     <div class="profile-user-settings">
@@ -52,9 +49,9 @@
                 </div>
                 {% if request.user.is_authenticated and request.user == profile.user %}
                 <div class="profile-buttons">
-                    <a href="{% url 'editprofile' %}" class="btn profile-edit-btn">Edit Profile</a>
-                    <a href="{% url 'sign-out' %}" class="btn profile-edit-btn">Logout</a>
-                    <a href="{% url 'dashboard' %}" class="btn profile-edit-btn">back</a>
+                    <a href="{% url 'editprofile' %}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{% url 'sign-out' %}" class="btn btn-primary">Logout</a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-primary">back</a>
                     <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
                 </div>
                 {% endif %}
@@ -70,9 +67,9 @@
             </div>
             <div class="profile-stats">
                 <ul>
-                    <li><span class="profile-stat-count">{{posts_count}}</span> posts</li>
-                    <li><span class="profile-stat-count">{{followers_count}}</span> followers</li>
-                    <li><span class="profile-stat-count">{{following_count}}</span> following</li>
+                    <li><span class="profile-stat-count">{{ posts_count }}</span> posts</li>
+                    <li><span class="profile-stat-count">{{ followers_count }}</span> followers</li>
+                    <li><span class="profile-stat-count">{{ following_count }}</span> following</li>
                 </ul>
                 <br>
             </div>
@@ -85,21 +82,18 @@
     <div class="container">
         <div class="gallery">
             {% for post in posts %}
-            <a href="{{post.get_absolute_url}}">
+            <a href="{{ post.get_absolute_url }}">
                 <div class="gallery-item" tabindex="0">
                     <img src="{{ post.picture.url }}" class="gallery-image" alt="" style="width: 500px; height: 300px; object-fit: cover;">
                     <div class="gallery-item-info">
                         <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> {{post.likes}}</li>
-                           
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> {{ post.likes }}</li>
                         </ul>
                     </div>
                 </div>
             </a>
             {% endfor %}
         </div>
-        <!-- End of gallery -->
     </div>
 </main>
-{% endblock%}
-
+{% endblock %}

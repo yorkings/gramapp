@@ -130,12 +130,15 @@
     min-height: 100vh;
 }
 .sidebar {
-
-  flex:1 1 0;  
+  position: fixed;
+  left: 0;top: 0;
+  flex:1 1 0; 
+  height: 100%; 
   max-width: 200px;
   padding: 2rem 1rem;
   background-color:var(--bs-dark);
 } 
+
 .sidebar .menu{ 
     margin: 0 -1rem;
 }
@@ -161,11 +164,17 @@
     padding-right: 0.4rem;
 }
 .content1{
+
     flex:1 1 0;
-    padding: 1rem 1rem;
+    padding: 20px;
+    margin-left:10rem;
     background-color: #f5f5f5;
     text-decoration: none;
+    
 }
+.content1:-webkit-scrollbar-track {
+    background-color: transparent; /* Set the background color of the scrollbar track */
+  }
 .toggle{
     display: none;
     position: fixed;
@@ -205,4 +214,6 @@
         transition: 0.2s linear ;
     }
 }
+
+
 
