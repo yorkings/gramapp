@@ -4,7 +4,7 @@
 <html>
 <head> 
   <title>Instagram Dashboard</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  
 
   <style>
 
@@ -39,7 +39,7 @@ header {
 }
 
 .search-bar input {
-  width: 100%;
+  width: 40%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -106,22 +106,8 @@ footer {
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="{%static '/insta/insta-logo.png' %}" alt="Instagram Logo">
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search">
-    </div>
-    <div class="profile-icon">
 
-      <a href="{% url 'profile' user.username %}">
-        <img src="{% static 'insta/proff-logo.png' %}" alt="Profile Icon">
-      </a>
-      
-    </div>
-  </header>
-
+   {% include 'navbar.html' %}
   <main>
     <div class="sidebar">
       <ul>
@@ -158,3 +144,15 @@ footer {
   </footer>
 </body>
 </html>
+
+<div class="message">
+  {% if messages %}
+  <ul class="messages">
+  {% for message in messages %}
+  <p class="{{ message.tags }}">
+  {{ message|safe }}     
+  </p>
+  {% endfor %}
+  {% endif %}
+</div>
+{% block content %}{% endblock %}

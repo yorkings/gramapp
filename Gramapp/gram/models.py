@@ -35,11 +35,9 @@ class Post(models.Model):
     created=models.DateTimeField(auto_now_add=True)  
     tags=models.ManyToManyField(Tag,related_name='Tags') 
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    likes=models.IntegerField(default=0)
-    
+    likes=models.IntegerField(default=0)    
     def get_absolute_url(self):
-        return reverse('Post',args=[str(self.id)]) 
-    
+        return reverse('post',args=[str(self.id)]) 
     def __str__(self):
         return self.caption
 

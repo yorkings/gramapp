@@ -1,0 +1,147 @@
+/* reset.css */
+/* CSS Reset by Eric Meyer */
+/* v2.0 - 20110126 */
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* License: none (public domain) */
+
+/* Base Styles */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Profile Styles */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-details {
+    flex: 1;
+    margin-left: 40px;
+}
+
+.profile-user-settings,
+.profile-bio,
+.profile-buttons {
+    margin-bottom: 20px;
+}
+
+.profile-label-text {
+    font-weight: bold;
+}
+
+.profile-user-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-buttons .btn {
+    margin-right: 10px;
+}
+
+.profile-stats ul {
+    display: flex;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    flex: 0 0 calc(33.33% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.gallery-item-info {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.gallery-item-likes {
+    display: flex;
+    align-items: center;
+}
+
+.gallery-item-likes i {
+    margin-right: 5px;
+}
+.fa-heart{
+   color: rgb(230, 26, 70);
+ }
