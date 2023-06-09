@@ -44,23 +44,28 @@ class Post(models.Model):
     def __str__(self):
         return self.caption
 
+# models.py
+
 class Likes(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="post_likes")
 
-    def user_liked_post(sender, instance, *args, **kwargs):
-        like = instance
-        post = like.post
-        sender = like.user
-        notify = Notification(post=post, sender=sender, user=post.user)
-        notify.save()
+    @classmethod
+    def create_or_delete_like(cls, user, post):
+        like, created = cls.objects.get_or_create(user=user, post=post)
+        if not created:
+            like.delete()
+        
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        like_count = Likes.objects.filter(post=self.post).count()
+        self.post.likes = like_count
+        self.post.save()
 
-    def user_unliked_post(sender, instance, *args, **kwargs):
-        like = instance
-        post = like.post
-        sender = like.user
-        notify = Notification.objects.filter(post=post, sender=sender, notification_types=1)
-        notify.delete()    
+
+# views.py
+
+
 
 class Follow(models.Model):
     follower=models.ForeignKey(User,on_delete=models.CASCADE,related_name='follower')
@@ -96,8 +101,8 @@ class Stream(models.Model):
 
 post_save.connect(Stream.add_post, sender=Post)
 
-post_save.connect(Likes.user_liked_post, sender=Likes)
-post_delete.connect(Likes.user_unliked_post, sender=Likes)
+# post_save.connect(Likes.user_liked_post, sender=Likes)
+# post_delete.connect(Likes.user_unliked_post, sender=Likes)
 
 post_save.connect(Follow.user_follow, sender=Follow)
 post_delete.connect(Follow.user_unfollow, sender=Follow)
