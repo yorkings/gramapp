@@ -3,7 +3,7 @@ from .views import *
 
 urlpatterns=[
     path('create/',createpost,name='newpost'),
-    path('post/<uuid:id>',PostDetail,name='post'),
+    path('post/<uuid:post_id>', PostDetail, name='post'),
     path('dashboard/',index,name='dashboard'),
     path('',home,name='home'),
     path('tag/<slug:tag_slug>', Tags, name='tags'),

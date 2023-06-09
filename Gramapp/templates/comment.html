@@ -145,18 +145,15 @@
     </style>
 </head>
 <body>
-
     <div class="comment-section">
         <!-- Comment form -->
-        <form class="comment-form" action="{% url 'add_comment_to_post' %}" method="post">
-            {% csrf_token %}
-            <select name="post">
-                {% for post in posts %}
-                <option value="{{ post.id }}">{{ post.title }}</option>
-                {% endfor %}
-            </select>
-            <textarea name="body" required placeholder="Write your comment"></textarea>
+        <form class="comment-form" action="{% url 'add_comment_to_post' post_id=post.id %}" method="post">
+            {% csrf_token %}            
+            <textarea id="body" name="body" required placeholder="Write your comment"></textarea>
+
+            
             <input type="submit" value="Comment" class="comment-button">
+
         </form>
         
         <!-- Display submitted comments -->
@@ -174,6 +171,5 @@
         </ul>
         {% endif %}
     </div>
-    
 </body>
 </html>

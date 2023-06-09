@@ -12,6 +12,7 @@ from comment.forms import NewCommentForm
 from django.core.paginator import Paginator
 from django.db.models import Q
 from gram.models import Post, Follow, Stream
+from comment.forms import NewCommentForm
 @login_required
 def index(request):
     user = request.user
@@ -74,28 +75,25 @@ def createpost(request):
 
 @login_required
 def PostDetail(request, post_id):
-    user = request.user
     post = get_object_or_404(Post, id=post_id)
-    comments = Comment.objects.filter(post=post).order_by('-date')
+    comments = Comment.objects.filter(post=post)
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = NewCommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
+            comment.user = request.user
             comment.post = post
-            comment.user = user
             comment.save()
-            return HttpResponseRedirect(reverse('post', args=[post.id]))
+            return redirect('details', post_id=post_id)
     else:
         form = NewCommentForm()
 
-    context = {
-        'post': post,
-        'form': form,
-        'comments': comments
-    }
+    for comment in comments:
+        profile = Profile.objects.get(user=comment.user)
 
-    return render(request, 'postdetail.html', context)
+    context = {'post': post, 'comments': comments, 'form': form}
+    return render(request, 'details.html', context)
 
 @login_required
 def Tags(request, tag_slug):

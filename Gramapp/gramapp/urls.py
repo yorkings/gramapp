@@ -26,7 +26,7 @@ urlpatterns = [
     path('user/',include('prof.urls')),
     path('notify/',include('notification.urls')),
     #profile
-    path('comm/',include('comment.urls')),
+    
     path('<username>',UserProfile,name='profile'),
     path('<username>/saved/', UserProfile, name='profilefavourite'),
     path('<username>/follow/<option>/', follow, name='follow'),
