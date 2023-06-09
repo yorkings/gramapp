@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import *
 
+from . import views
 urlpatterns=[
     path('create/',createpost,name='newpost'),
     path('post/<uuid:id>',PostDetail,name='post'),
@@ -11,5 +12,8 @@ urlpatterns=[
     path('<uuid:post_id>/favourite', favourite, name='favourite'),
     path('reels/', reels, name='reels'),
 ]
+
+
+
 
  

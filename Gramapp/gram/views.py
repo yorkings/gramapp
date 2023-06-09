@@ -10,13 +10,10 @@ from django.urls import resolve
 from comment.models import Comment
 from comment.forms import NewCommentForm
 from django.core.paginator import Paginator
-<<<<<<< HEAD
 from .models import Reel
-
-=======
->>>>>>> origin
 from django.db.models import Q
 from gram.models import Post, Follow, Stream
+
 @login_required
 def index(request):
     user = request.user
@@ -148,12 +145,16 @@ def home(request):
 
 @login_required
 def dashboard(request):
-<<<<<<< HEAD
    return render(request,'index.html',{'user':request.user}) 
 
 def reels(request):
     reels = Reel.objects.all()
     return render(request, 'reels.html', {'reels': reels})
-=======
-   return render(request,'base.html',{'user':request.user}) 
->>>>>>> origin
+
+
+
+
+def messaging(request):
+    return render(request, 'messaging.html')
+
+

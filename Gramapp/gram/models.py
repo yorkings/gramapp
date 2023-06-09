@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 import uuid
 from notification.models import Notification
+from django.db import models
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 #to upload user files to a specific directory
@@ -106,4 +109,5 @@ class Reel(models.Model):
     video_url = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-    
+
+
