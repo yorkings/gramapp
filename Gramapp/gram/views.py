@@ -10,6 +10,7 @@ from django.urls import resolve
 from comment.models import Comment
 from comment.forms import NewCommentForm
 from django.core.paginator import Paginator
+from .models import Reel
 
 from django.db.models import Q
 # from post.models import Post, Follow, Stream
@@ -152,3 +153,7 @@ def home(request):
 @login_required
 def dashboard(request):
    return render(request,'index.html',{'user':request.user}) 
+
+def reels(request):
+    reels = Reel.objects.all()
+    return render(request, 'reels.html', {'reels': reels})

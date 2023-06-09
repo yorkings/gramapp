@@ -100,3 +100,12 @@ post_delete.connect(Likes.user_unliked_post, sender=Likes)
 
 post_save.connect(Follow.user_follow, sender=Follow)
 post_delete.connect(Follow.user_unfollow, sender=Follow)
+
+
+
+class Reel(models.Model):
+    title = models.CharField(max_length=100)
+    video_url = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    

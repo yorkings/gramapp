@@ -1,0 +1,36 @@
+/* reels.css */
+.reels-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #959eb9;
+}
+
+.reel {
+    width: 300px;
+    margin: 10px;
+    
+    
+}
+
+.reel-video {
+    width: 100%;
+    border-radius: 15%;
+}
+
+.reel-info {
+    margin-top: 5px;
+}
+
+.reel-title {
+    font-weight: bold;
+}
+
+.reel-username {
+    font-size: 20px;
+    color: #df1d1d;
+}
+ .body {
+    background-color: brown;
+ }

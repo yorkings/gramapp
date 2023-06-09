@@ -1,0 +1,31 @@
+<!-- reels.html -->
+{%  load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram Reels</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reels.css' %}">
+</head>
+<body>
+    <div class="reels-container">
+            <div class="reel">
+                <video class="reel-video" src="{{ reel.video_url }}" controls style="border-radius: 15px;"></video>
+                    <div class="reel-title">nairobi gossip{{ reel.title }}</div>
+                    <div class="reel-username">Posted by dennis: {{ reel.user.username }}</div>
+
+                    <video class="reel-video" src="{{ reel.video_url }}" controls style="border-radius: 15px;"></video>
+                    <div class="reel-title">world news:{{ reel.title }}</div>
+                    <div class="reel-username">Posted by yorke: {{ reel.user.username }}</div>
+
+                    <video class="reel-video" src="{{ reel.video_url }}" controls style="border-radius: 15px;"></video>
+                    <div class="reel-title">kenyan news:{{ reel.title }}</div>
+                    <div class="reel-username">Posted by philip: {{ reel.user.username }} sy</div>
+
+                </div>
+                <div class="reel-date">{{ reel.created_at }}</div>
+               
+            </div>
+    </div>
+</body>
+</html>
+<tr</tr>
