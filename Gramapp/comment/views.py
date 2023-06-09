@@ -38,7 +38,7 @@ from datetime import datetime
  
 def add_comment_to_post(request):
     form = NewCommentForm()
-
+ 
     if request.method == 'POST':
         form = NewCommentForm(request.POST)
         if form.is_valid():
