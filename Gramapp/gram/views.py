@@ -85,7 +85,7 @@ def PostDetail(request, post_id):
             comment.user = request.user
             comment.post = post
             comment.save()
-            return redirect('details', post_id=post_id)
+            return redirect('post', post_id=post_id)
     else:
         form = NewCommentForm()
 
@@ -94,6 +94,8 @@ def PostDetail(request, post_id):
 
     context = {'post': post, 'comments': comments, 'form': form}
     return render(request, 'details.html', context)
+
+
 
 @login_required
 def Tags(request, tag_slug):

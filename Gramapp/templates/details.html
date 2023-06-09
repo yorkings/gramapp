@@ -4,6 +4,7 @@
 {% block title %}Post Details{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
 <style>
     a{
         text-decoration: none;
@@ -184,10 +185,21 @@
         .card{
             background-color: #a3a4a3;
         }
+        .form-control{
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+            outline: none;
+            resize: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
 </style>
 <div class="post-details">
   <h1>{{ post.title }}</h1>
   <img src="{{ post.picture.url }}" class="image-card" alt="">
+  <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> {{ post.likes }}</li>
   <br/>
   <p class="caption">{{ post.caption }}</p>
   <ul class="tag-list">
@@ -201,12 +213,12 @@
     <form method="POST" action="">
         {% csrf_token %}
         <div class="form-group">
-            <label for="comment">Comment</label>
-            <textarea class="form-control" rows="2" id="content" name="content"></textarea>
+            <textarea class="form-control" id="body" name="body" rows="2" required placeholder="Write your comment"></textarea>
         </div>
+        <br/>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    
+    <br/>
     <!-- Display submitted comments -->
 
     <h4>Comments</h4>
