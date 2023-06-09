@@ -1,169 +1,142 @@
-/* Custom styles for the Instagram home page */
-
-/* Body styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
-  }
-  
-  /* Header styles */
-  header {
-    background-color: #fff;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Main styles */
-  main {
-    margin-top: 20px;
-  }
-  
+  background-color: #fafafa;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100px;
+  height: 100px;
+}
+
+.profile-info {
+  margin-left: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.post-container {
+  margin-bottom: 20px;
+}
+
+.post {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user-picture {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+}
+
+.post-image {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.post-actions {
+  margin-bottom: 10px;
+}
+
+.like-link {
+  margin-right: 10px;
+  color: #3897f0;
+  text-decoration: none;
+}
+
+.post-likes {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.suggestions {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.suggestions-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.suggested-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.suggested-picture {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.follow-link {
+  margin-left: 10px;
+  color: #3897f0;
+  text-decoration: none;
+}
+
+.suggestions-button {
+  background-color: #3897f0;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.suggestions-button:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -10px;
-  }
-  
-  .col-3,
-  .col-6 {
     padding: 10px;
   }
-  
-  .card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
+
+  .profile-picture img {
+    width: 30px;
+    height: 30px;
   }
-  
-  .card-title {
-    font-size: 18px;
-    font-weight: bold;
+
+  .user-picture {
+    width: 30px;
+    height: 30px;
   }
-  
-  .card-text {
-    margin-top: 10px;
+
+  .suggested-picture {
+    width: 20px;
+    height: 20px;
   }
-  
-  /* Story styles */
-  .story {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  .story__avatar {
-    position: relative;
-  }
-  
-  .story__border {
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    background-color: #feda75;
-  }
-  
-  .story__border svg {
-    fill: #fff;
-  }
-  
-  .story__picture img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .story__user {
-    margin-left: 10px;
-    font-weight: bold;
-  }
-  
-  /* Suggestions styles */
-  h2 {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: #3897f0;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  .side-menu__suggestions-content {
-    margin-top: 10px;
-  }
-  
-  .side-menu__suggestion {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .side-menu__suggestion-avatar img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .side-menu__suggestion-info {
-    margin-left: 10px;
-  }
-  
-  .side-menu__suggestion-info a {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .side-menu__suggestion-info span {
-    font-size: 12px;
-    color: #999;
-  }
-  
-  .side-menu__suggestion-button {
-    background-color: #3897f0;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    text-decoration: none;
-  }
-  
-  .side-menu__suggestion-button:hover {
-    background-color: #357ae8;
-  }
-  
-  /* Footer styles */
-  footer {
-    background-color: #f7f7f7;
-    padding: 20px;
-    text-align: center;
-    font-size: 12px;
-    color: #999;
-  }
-  
-  
+}

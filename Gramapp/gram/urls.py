@@ -7,10 +7,11 @@ urlpatterns=[
     path('dashboard/',index,name='dashboard'),
     path('',home,name='home'),
     path('tag/<slug:tag_slug>', Tags, name='tags'),
-    path('<uuid:post_id>/like', like, name='like'),
     path('<uuid:post_id>/favourite', favourite, name='favourite'),
-    path('comment/', notification, name='comment1')
+    path('comment/', notification, name='comment1'),
     
+    path('like/<int:post_id>/', like, name='like'),
+
 ]
 
  
