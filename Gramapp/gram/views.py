@@ -144,3 +144,10 @@ def home(request):
 @login_required
 def dashboard(request):
    return render(request,'base.html',{'user':request.user}) 
+
+
+def notification(request):
+    user = request.user
+    comments = Comment.objects.filter(post__user=user)
+    context = {'comments': comments}
+    return render(request, 'notification.html', context)

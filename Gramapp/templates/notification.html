@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}My Comments{% endblock %}
+
+{% block content %}
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .my-4 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .list-group {
+            margin-top: 20px;
+        }
+        
+        .list-group-item {
+            padding: 10px 20px;
+            border: none;
+            background-color: #f8f9fa;
+        }
+        
+        .list-group-item span {
+            font-weight: bold;
+        }
+        
+        .list-group-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .list-group-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <div class="container">
+        <h1 class="my-4">My Comments</h1>
+        <ul class="list-group">
+            {% for comment in comments %}
+                <li class="list-group-item">
+                    <span><a href="{% url 'profile' comment.user.username %}" >{{ comment.user.username }}</a>: </span>
+                    <span>{{ comment.body }}</span> 
+                    <br/>
+                    Post: <a href="{% url 'post' comment.post.id %}">{{ comment.post.caption }}</a>
+                </li>
+            {% empty %}
+                <li class="list-group-item">No comments yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
