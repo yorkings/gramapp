@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'dash.css' %}">
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <button class="story">
+                    <div class="story__avatar">
+                        <div class="story__border">
+                            <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+                                <circle r="31" cy="32" cx="32"/>
+                            </svg>
+                        </div>
+                        <div class="story__picture">
+                            <img src="{{ request.user.profile.image.url }}" style="width: 80px; height: 80px; object-fit: cover;">
+                        </div>
+                    </div>
+                    <span class="story__user">@{{ request.user.username }}</span>
+                </button>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    {% for post in post_items %}
+                        {% if post.user.profile.image %}
+                            <a href="{{ post.user.profile.image.url }}" class="post__avatar">
+                                <img src="{{ post.user.profile.image.url }}" alt="User Picture">
+                            </a>
+                        {% endif %}
+                        <a href="{{ post.user.username }}" class="post__user">{{ post.user.username }}</a>
+                        <a href="{% url 'post-details' post.id %}">
+                            <img class="card-img-top" src="{{ post.picture.url }}" alt="Post Content" style="width: 700px; height: 348px; object-fit: cover;">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">likes</h5>
+                            <p class="card-text">
+                                <a href="{% url 'like' post.id %}" class="post__button">like</a>
+                                @{{ post.user.username }} {{ post.caption }}
+                                {% for tag in post.tags.all %} #{{ tag }} {% endfor %}
+                                {{ post.posted }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-3">
+                <h2>Suggestions for You</h2>
+                <button>See All</button>
+                <div class="side-menu__suggestions-content">
+                    {% for user in all_users %}
+                        {% if request.user.username != user.username %}
+                            <div class="side-menu__suggestion">
+                                <a href="{% url 'profile' user %}" class="side-menu__suggestion-avatar">
+                                    <img src="{{ user.profile.image.url }}" alt="User Picture">
+                                </a>
+                                <div class="side-menu__suggestion-info">
+                                    {% if user.profile.first_name %}
+                                        <a href="{% url 'profile' user %}">{{ user.profile.first_name|title }} {{ user.profile.last_name|title }}</a>
+                                    {% else %}
+                                        <a href="{% url 'profile' user %}">{{ user.username }}</a>
+                                    {% endif %}
+                                    <span>@{{ user.username }}</span>
+                                </div>
+                                {% if follow_status == True %}
+                                    <a href="{% url 'follow' user 0 %}" class="side-menu__suggestion-button">Follow</a>
+                                {% else %}
+                                    <a href="{% url 'follow' user 1 %}" class="side-menu__suggestion-button">Follow</a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <!-- Footer content here -->
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+{% endblock %}

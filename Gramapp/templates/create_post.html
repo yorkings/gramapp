@@ -1,109 +1,112 @@
+{% extends 'base.html' %}
+{% block title %}create post {% endblock %}
+{% block content %}
 <style>
-    /* Container styles */
-    #wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #fafafa;
-    }
-  
-    .container {
-      width: 400px;
-      background-color: #fff;
-      border: 1px solid #dbdbdb;
-      border-radius: 4px;
-      padding: 20px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
-  
-    /* Logo styles */
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  
-    .logo h3 {
-      font-size: 20px;
-      color: #262626;
-      font-weight: bold;
-      margin: 0;
-    }
-  
-    /* Form styles */
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .form-group {
-      margin-bottom: 20px;
-    }
-  
-    .form-group label {
-      font-size: 14px;
-      font-weight: bold;
-      color: #999999;
-      margin-bottom: 5px;
-    }
-  
-    .form-group input[type="file"],
-    .form-group input[type="text"] {
-      padding: 10px;
-      border: 1px solid #dbdbdb;
-      border-radius: 4px;
-      font-size: 14px;
-      color: #262626;
-    }
-  
-    .form-group textarea {
-      padding: 10px;
-      border: 1px solid #dbdbdb;
-      border-radius: 4px;
-      font-size: 14px;
-      color: #262626;
-      resize: vertical;
-      height: 100px;
-    }
-  
-    .form-btn {
-      background-color: #3897f0;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-  
-    .form-btn:hover {
-      background-color: #3897f0cc;
-    }
-  </style>
-  
-  <div id="wrapper">
-    <div class="container">
-      <div class="logo">
-        <h3>Create New Post</h3>
-      </div>
-      <div class="form-data">
-        <form action="" method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          <div class="form-group">
-            <label for="id_picture">Choose Picture</label>
-            {{ form.picture }}
-          </div>
-          <div class="form-group">
-            <label for="id_caption">Caption</label>
-            {{ form.caption }}
-          </div>
-          <div class="form-group">
-            <label for="id_tags">Tags</label>
-            {{ form.tags }}
-          </div>
-          <button class="form-btn" type="submit">Post</button>
-        </form>
-      </div>
+  /* Container styles */
+  #wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fafafa;
+  }
+
+  .container {
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Logo styles */
+  .logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .logo h3 {
+    font-size: 20px;
+    color: #262626;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  /* Form styles */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #999999;
+    margin-bottom: 5px;
+  }
+
+  .form-group input[type="file"],
+  .form-group input[type="text"] {
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #262626;
+  }
+
+  .form-group textarea {
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #262626;
+    resize: vertical;
+    height: 100px;
+  }
+
+  .form-btn {
+    background-color: #3897f0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .form-btn:hover {
+    background-color: #3897f0cc;
+  }
+</style>
+
+<div id="wrapper">
+  <div class="container">
+    <div class="logo">
+      <h3>Create New Post</h3>
+    </div>
+    <div class="form-data">
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_picture">Choose Picture</label>
+          {{ form.picture }}
+        </div>
+        <div class="form-group">
+          <label for="id_caption">Caption</label>
+          {{ form.caption }}
+        </div>
+        <div class="form-group">
+          <label for="id_tags">Tags</label>
+          {{ form.tags }}
+        </div>
+        <button class="form-btn" type="submit">Post</button>
+      </form>
     </div>
   </div>
-  
+</div>
+{% endblock %}
