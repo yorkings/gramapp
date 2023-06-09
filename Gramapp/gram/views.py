@@ -23,27 +23,15 @@ def index(request):
     profile = Profile.objects.all()
 
     posts = Stream.objects.filter(user=user)
-    group_ids = []
-    for post in posts:
-        group_ids.append(post.id)
         
-    post_items = Post.objects.filter(id__in=group_ids).all().order_by('-created')
-
-    query = request.GET.get('q')
-    if query:
-        users = User.objects.filter(Q(username__icontains=query))
-
-        paginator = Paginator(users, 6)
-        page_number = request.GET.get('page')
-        users_paginator = paginator.get_page(page_number)
+    post_items = Post.objects.all().order_by('-created')
     context = {
-        'post_items': post_items,
+        'poste': post_items,
         'follow_status': follow_status,
         'profile': profile,
         'all_users': all_users,
     }
     return render(request, 'dashboard.html', context)
-
 
 @login_required
 def createpost(request):
@@ -142,3 +130,18 @@ def home(request):
 @login_required
 def dashboard(request):
    return render(request,'base.html',{'user':request.user}) 
+@login_required
+def like(request, post_id):
+    user = request.user
+    post = get_object_or_404(Post, id=post_id)
+    Likes.create_or_delete_like(user, post)
+    liked = Likes.objects.filter(user=user, post=post).count()
+    if liked % 2 == 0:
+        Likes.objects.create(user=user, post=post)
+        post.likes += 1
+    else:
+        Likes.objects.filter(user=user, post=post).delete()
+        post.likes -= 1
+    
+    post.save()
+    return HttpResponseRedirect(reverse('post', args=[post_id]))
