@@ -74,7 +74,7 @@ def PostDetail(request, post_id):
             comment.user = request.user
             comment.post = post
             comment.save()
-            return redirect('details', post_id=post_id)
+            return redirect('post', post_id=post_id)
     else:
         form = NewCommentForm()
 
@@ -83,6 +83,8 @@ def PostDetail(request, post_id):
 
     context = {'post': post, 'comments': comments, 'form': form}
     return render(request, 'details.html', context)
+
+
 
 @login_required
 def Tags(request, tag_slug):
@@ -130,7 +132,6 @@ def home(request):
 
 @login_required
 def dashboard(request):
-<<<<<<< HEAD
    return render(request,'index.html',{'user':request.user}) 
 
 def reels(request):
@@ -144,8 +145,16 @@ def messaging(request):
     return render(request, 'messaging.html')
 
 
-=======
-   return render(request,'base.html',{'user':request.user}) 
+
+  
+
+
+def notification(request):
+    user = request.user
+    comments = Comment.objects.filter(post__user=user)
+    context = {'comments': comments}
+    return render(request, 'notification.html', context)
+
 @login_required
 def like(request, post_id):
     user = request.user
@@ -161,4 +170,4 @@ def like(request, post_id):
     
     post.save()
     return HttpResponseRedirect(reverse('post', args=[post_id]))
->>>>>>> 9c2f02e533590ed3e62a26ed821ae8714521439e
+

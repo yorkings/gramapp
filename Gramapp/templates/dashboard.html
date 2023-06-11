@@ -62,11 +62,11 @@
                             {% else %}
                                 <a href="{% url 'profile' user %}" class="username">{{ user.username }}</a>
                             {% endif %}
-                            <span class="username">@{{ user.username }}</span>
+                            <span class="username">@{{ user.username }}</span> 
                             {% if follow_status == True %}
-                                <a href="{% url 'follow' user 0 %}" class="follow-link">Follow</a>
+                                <button class="btn btn-primary" ><a href="{% url 'follow' user 0 %}" class="follow-link">Follow</a></button>
                             {% else %}
-                                <a href="{% url 'follow' user 1 %}" class="follow-link">Follow</a>
+                            <button class="btn btn-primary" ><a href="{% url 'follow' user 1 %}" class="follow-link">Follow</a></button>
                             {% endif %}
                         </div>
                     </div>
